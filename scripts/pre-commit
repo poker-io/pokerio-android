@@ -1,0 +1,16 @@
+#!/bin/sh
+
+echo "=> Running kotlin linter"
+
+git stash -q --keep-index
+
+./gradlew ktlintFormat
+
+status=$?
+
+git stash pop -q
+
+echo "=> Done linting"
+
+exit $status
+
